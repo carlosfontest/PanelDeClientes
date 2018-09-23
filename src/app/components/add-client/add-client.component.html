@@ -78,7 +78,7 @@
           minlength="10"
         >
         <div [hidden]="!clientPhone.errors?.required" class="invalid-feedback">Phone is required</div>
-        <div [hidden]="!clientPhone.errors?.pattern" class="invalid-feedback">Must be at least 10 characters</div>
+        <div [hidden]="!clientPhone.errors?.minlength" class="invalid-feedback">Must be at least 10 characters</div>
       </div>
       
       <!-- Balance -->
