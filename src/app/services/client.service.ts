@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, Action, DocumentSnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Client } from '../models/Client';
 import { map } from 'rxjs/operators';
@@ -22,9 +22,9 @@ export class ClientService {
     // Get clients with the ID
     this.clients = this.clientsCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as Client;
-        data.id = a.payload.doc.id;
-        return data;
+        const client = a.payload.doc.data() as Client;
+        client.id = a.payload.doc.id;
+        return client;
       }))
     );
 
@@ -37,15 +37,18 @@ export class ClientService {
 
   getClient(id: string): Observable<Client> {
     this.clientDoc = this.afs.doc<Client>(`clients/${id}`);
-    
+
     this.client = this.clientDoc.snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as Client;
-        data.id = a.payload.doc.id;
-        return data;
-      }))
+      map(a => {
+        const client = a.payload.data();
+        client.id = a.payload.id;
+        return client;
+     })
     );
 
-    return this.client;
+      return this.client;
   }
+
+
+  
 }
