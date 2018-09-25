@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../services/client.service';
+import { SettingsService } from '../../services/settings.service';
 import { Client } from '../../models/Client';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -16,6 +17,7 @@ export class EditClientComponent implements OnInit {
 
   constructor(
     private clientService: ClientService,
+    private settingsService: SettingsService,
     private router: Router,
     private route: ActivatedRoute,
     private flashMessage: FlashMessagesService
@@ -27,10 +29,11 @@ export class EditClientComponent implements OnInit {
       phone: '',
       balance: 0
     };
-    this.disableBalanceOnEdit = true;
   }
 
   ngOnInit() {
+    this.disableBalanceOnEdit = this.settingsService.getSettings().disableBalanceOnEdit;
+    
     // Get ID from URL
     this.id = this.route.snapshot.params['id'];
     // Get client from firestore

@@ -25,6 +25,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 // Services
 import { ClientService } from './services/client.service';
 import { AuthService } from './services/auth.service';
+import { SettingsService } from './services/settings.service';
 
 // Others
 import { environment } from '../environments/environment';
@@ -56,7 +57,8 @@ import { environment } from '../environments/environment';
   ],
   providers: [
     ClientService,
-    AuthService
+    AuthService,
+    SettingsService
   ],
   bootstrap: [AppComponent]
 })

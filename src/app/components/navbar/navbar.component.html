@@ -13,10 +13,10 @@
 
       <ul class="navbar-nav ml-auto">
         <!-- If not logged in -->
-        <li *ngIf="!isLoggedIn" class="nav-item">
+        <li *ngIf="!isLoggedIn && allowRegister" class="nav-item">
           <a routerLink='/register' class="nav-link">Register</a>
         </li>
-        <li *ngIf="!isLoggedIn" class="nav-item">
+        <li *ngIf="!isLoggedIn && allowRegister" class="nav-item">
           <a routerLink='/login' class="nav-link">Login</a>
         </li>
 
