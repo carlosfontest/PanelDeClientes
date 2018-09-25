@@ -40,15 +40,24 @@ export class ClientService {
 
     this.client = this.clientDoc.snapshotChanges().pipe(
       map(a => {
-        const client = a.payload.data();
-        client.id = a.payload.id;
-        return client;
+        if (a.payload.exists === false) {
+          return null;
+        } else {
+          const client = a.payload.data();
+          client.id = a.payload.id;
+          return client;
+        }
      })
     );
 
       return this.client;
   }
 
+  updateClient(client: Client) {
+    this.clientDoc = this.afs.doc<Client>(`clients/${client.id}`);
+    this.clientDoc.update(client);
+  }
 
-  
+
+
 }
