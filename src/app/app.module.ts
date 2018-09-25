@@ -24,6 +24,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // Services
 import { ClientService } from './services/client.service';
+import { AuthService } from './services/auth.service';
 
 // Others
 import { environment } from '../environments/environment';
@@ -53,7 +54,10 @@ import { environment } from '../environments/environment';
     FormsModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [ClientService],
+  providers: [
+    ClientService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
