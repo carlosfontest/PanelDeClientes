@@ -47,7 +47,7 @@ export class ClientService {
           client.id = a.payload.id;
           return client;
         }
-     })
+    })
     );
 
       return this.client;
