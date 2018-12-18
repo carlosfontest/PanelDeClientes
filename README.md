@@ -6,6 +6,16 @@ Panel de Clientes en el cual se lleva un registro de los clientes de una determi
 ## ***Hosting Página***
 [https://paneldeclientes-8fa00.firebaseapp.com/](https://paneldeclientes-8fa00.firebaseapp.com/ "Client Panel")
 
+## ***Quick Start***
+>Es necesario tener ***node.js*** y ***angular-cli*** para poder ejecutar la aplicación.
+```bash
+# Install Dependencies
+npm install
+
+# Serve on localhost:4200
+ng serve
+```
+
 
 ## ***ScreenShots***
 
